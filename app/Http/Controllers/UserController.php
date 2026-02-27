@@ -3,15 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class UserController extends Controller
 {
     //
-    function getUser(){
-        return "Pieash Ahmed";
+    function userHome($name = "Pieash")
+    {
+        $users =['Pieash', 'Ahmed', 'Khan'];
+        return view("home", ["name" => $name, "users" => $users]);
     }
 
-    function getUserName($name){
-        return "User name is: " . $name;
+    function adminLogin()
+    {
+        if (View::exists("admin.login")) {
+            # code...
+            return view("admin.login");
+        }else {
+            echo "View not found!";
+        }
     }
 }
