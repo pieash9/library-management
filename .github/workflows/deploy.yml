@@ -23,20 +23,16 @@ jobs:
             # Pull the latest code
             git pull origin main
 
-            # Install Composer dependencies (if applicable)
+            # Install Composer dependencies (without dev dependencies)
             composer install --no-dev --optimize-autoloader
 
-            # Clear and rebuild cache (Laravel example)
+            # Clear and rebuild Laravel cache
             php artisan cache:clear
             php artisan config:clear
             php artisan view:clear
             php artisan route:clear
             php artisan optimize
 
-            # Set proper permissions (if needed)
-            chmod -R 755 storage bootstrap/cache
-            chown -R www-data:www-data storage bootstrap/cache
-
-            # Restart services (if applicable)
-            # sudo systemctl restart apache2
-            # sudo systemctl restart php8.2-fpm
+            # Set proper permissions (use chmod instead of chown)
+            chmod -R 755 storage
+            chmod -R 755 bootstrap/cache
