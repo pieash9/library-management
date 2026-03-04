@@ -12,7 +12,7 @@
         <div class="grid w-full gap-8 lg:grid-cols-2">
             <section class="panel space-y-4">
                 <p class="inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-sky-700">Library Workflow</p>
-                <h1 class="text-3xl font-bold tracking-tight text-slate-900">Manage lending operations with role-based control</h1>
+                <h1 class="text-3xl font-bold tracking-tight text-slate-900">Manage lending operations</h1>
                 <p class="text-sm leading-6 text-slate-600">Track borrow requests, approve returns, monitor overdue books, and inspect analytics from a unified dashboard.</p>
                 <div class="grid gap-3 sm:grid-cols-2">
                     <div class="panel-muted">

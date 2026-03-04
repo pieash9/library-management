@@ -19,8 +19,24 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /var/www/27493b2c-714f-4a45-aa12-aeaf694f4411/library-managment
+
+            # Pull the latest code
             git pull origin main
-            # Add any other deployment commands here, e.g.:
-            # npm install
-            # composer install
-            # pm2 restart app
+
+            # Install Composer dependencies (if applicable)
+            composer install --no-dev --optimize-autoloader
+
+            # Clear and rebuild cache (Laravel example)
+            php artisan cache:clear
+            php artisan config:clear
+            php artisan view:clear
+            php artisan route:clear
+            php artisan optimize
+
+            # Set proper permissions (if needed)
+            chmod -R 755 storage bootstrap/cache
+            chown -R www-data:www-data storage bootstrap/cache
+
+            # Restart services (if applicable)
+            # sudo systemctl restart apache2
+            # sudo systemctl restart php8.2-fpm
